@@ -1,0 +1,34 @@
+# Generated files
+*.class
+*.jar
+*.o
+*.pyc
+*.dll
+
+# Sensitive information
+*.key
+*.pem
+*.env
+*.config
+
+# User and OS-specific files
+*.log
+*.swp
+*.DS_Store
+Thumbs.db
+
+# Build artifacts and output
+/bin
+/build
+/dist
+/target
+
+# Third-party libraries and dependencies
+/node_modules
+/vendor
+/.venv
+/.gradle
+
+# IDE specific settings
+/.idea
+/.settings
