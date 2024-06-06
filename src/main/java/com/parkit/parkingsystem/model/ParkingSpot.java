@@ -3,6 +3,7 @@ package com.parkit.parkingsystem.model;
 import com.parkit.parkingsystem.constants.ParkingType;
 
 public class ParkingSpot {
+
     private int number;
     private ParkingType parkingType;
     private boolean isAvailable;
@@ -49,4 +50,5 @@ public class ParkingSpot {
     public int hashCode() {
         return number;
     }
+
 }

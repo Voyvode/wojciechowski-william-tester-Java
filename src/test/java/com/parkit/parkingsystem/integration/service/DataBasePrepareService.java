@@ -8,23 +8,22 @@ public class DataBasePrepareService {
 
     DataBaseTestConfig dataBaseTestConfig = new DataBaseTestConfig();
 
-    public void clearDataBaseEntries(){
+    public void clearDataBaseEntries() {
         Connection connection = null;
-        try{
+        try {
             connection = dataBaseTestConfig.getConnection();
 
             //set parking entries to available
-            connection.prepareStatement("update parking set available = true").execute();
+            connection.prepareStatement("UPDATE parking SET available = TRUE").execute();
 
             //clear ticket entries;
-            connection.prepareStatement("truncate table ticket").execute();
+            connection.prepareStatement("TRUNCATE TABLE ticket").execute();
 
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             dataBaseTestConfig.closeConnection(connection);
         }
     }
-
 
 }

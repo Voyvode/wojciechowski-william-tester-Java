@@ -1,53 +1,69 @@
-/* Setting up PROD DB */
-create database prod;
-use prod;
+/* Setting up prod database */
+CREATE DATABASE prod;
+USE prod;
 
-create table parking(
-PARKING_NUMBER int PRIMARY KEY,
-AVAILABLE bool NOT NULL,
-TYPE varchar(10) NOT NULL
+CREATE TABLE parking
+(
+    parking_number INT PRIMARY KEY,
+    available      BOOL        NOT NULL,
+    type           VARCHAR(10) NOT NULL
 );
 
-create table ticket(
- ID int PRIMARY KEY AUTO_INCREMENT,
- PARKING_NUMBER int NOT NULL,
- VEHICLE_REG_NUMBER varchar(10) NOT NULL,
- PRICE double,
- IN_TIME DATETIME NOT NULL,
- OUT_TIME DATETIME,
- FOREIGN KEY (PARKING_NUMBER)
- REFERENCES parking(PARKING_NUMBER));
-
-insert into parking(PARKING_NUMBER,AVAILABLE,TYPE) values(1,true,'CAR');
-insert into parking(PARKING_NUMBER,AVAILABLE,TYPE) values(2,true,'CAR');
-insert into parking(PARKING_NUMBER,AVAILABLE,TYPE) values(3,true,'CAR');
-insert into parking(PARKING_NUMBER,AVAILABLE,TYPE) values(4,true,'BIKE');
-insert into parking(PARKING_NUMBER,AVAILABLE,TYPE) values(5,true,'BIKE');
-commit;
-
-/* Setting up TEST DB */
-create database test;
-use test;
-
-create table parking(
-PARKING_NUMBER int PRIMARY KEY,
-AVAILABLE bool NOT NULL,
-TYPE varchar(10) NOT NULL
+CREATE TABLE ticket
+(
+    id                 INT PRIMARY KEY AUTO_INCREMENT,
+    parking_number     INT         NOT NULL,
+    vehicle_reg_number VARCHAR(10) NOT NULL,
+    price              DOUBLE,
+    in_time            DATETIME    NOT NULL,
+    out_time           DATETIME,
+    FOREIGN KEY (parking_number)
+        REFERENCES parking (parking_number)
 );
 
-create table ticket(
- ID int PRIMARY KEY AUTO_INCREMENT,
- PARKING_NUMBER int NOT NULL,
- VEHICLE_REG_NUMBER varchar(10) NOT NULL,
- PRICE double,
- IN_TIME DATETIME NOT NULL,
- OUT_TIME DATETIME,
- FOREIGN KEY (PARKING_NUMBER)
- REFERENCES parking(PARKING_NUMBER));
+INSERT INTO parking(parking_number, available, type)
+VALUES (1, TRUE, 'CAR');
+INSERT INTO parking(parking_number, available, type)
+VALUES (2, TRUE, 'CAR');
+INSERT INTO parking(parking_number, available, type)
+VALUES (3, TRUE, 'CAR');
+INSERT INTO parking(parking_number, available, type)
+VALUES (4, TRUE, 'BIKE');
+INSERT INTO parking(parking_number, available, type)
+VALUES (5, TRUE, 'BIKE');
+COMMIT;
 
-insert into parking(PARKING_NUMBER,AVAILABLE,TYPE) values(1,true,'CAR');
-insert into parking(PARKING_NUMBER,AVAILABLE,TYPE) values(2,true,'CAR');
-insert into parking(PARKING_NUMBER,AVAILABLE,TYPE) values(3,true,'CAR');
-insert into parking(PARKING_NUMBER,AVAILABLE,TYPE) values(4,true,'BIKE');
-insert into parking(PARKING_NUMBER,AVAILABLE,TYPE) values(5,true,'BIKE');
-commit;
+/* Setting up test database */
+CREATE DATABASE test;
+USE test;
+
+CREATE TABLE parking
+(
+    parking_number INT PRIMARY KEY,
+    available      BOOL        NOT NULL,
+    type           VARCHAR(10) NOT NULL
+);
+
+CREATE TABLE ticket
+(
+    id                 INT PRIMARY KEY AUTO_INCREMENT,
+    parking_number     INT         NOT NULL,
+    vehicle_reg_number VARCHAR(10) NOT NULL,
+    price              DOUBLE,
+    in_time            DATETIME    NOT NULL,
+    out_time           DATETIME,
+    FOREIGN KEY (parking_number)
+        REFERENCES parking (parking_number)
+);
+
+INSERT INTO parking(parking_number, available, type)
+VALUES (1, TRUE, 'CAR');
+INSERT INTO parking(parking_number, available, type)
+VALUES (2, TRUE, 'CAR');
+INSERT INTO parking(parking_number, available, type)
+VALUES (3, TRUE, 'CAR');
+INSERT INTO parking(parking_number, available, type)
+VALUES (4, TRUE, 'BIKE');
+INSERT INTO parking(parking_number, available, type)
+VALUES (5, TRUE, 'BIKE');
+COMMIT;
