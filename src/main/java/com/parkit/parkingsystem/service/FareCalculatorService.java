@@ -16,7 +16,9 @@ public class FareCalculatorService {
 
         double duration = Duration.between(inHour, outHour).toMinutes() / 60d; // to decimal hours
 
-        switch (ticket.getParkingSpot().getParkingType()) {
+        if (duration < 0.5) { // less than half an hour
+            ticket.setPrice(0);
+        } else switch (ticket.getParkingSpot().getParkingType()) {
             case CAR -> ticket.setPrice(duration * Fare.CAR_RATE_PER_HOUR);
             case BIKE -> ticket.setPrice(duration * Fare.BIKE_RATE_PER_HOUR);
         }
