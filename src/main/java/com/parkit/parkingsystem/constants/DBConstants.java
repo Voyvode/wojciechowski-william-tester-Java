@@ -23,6 +23,6 @@ public class DBConstants {
     public static final String GET_TICKET = """
             SELECT t.parking_number, t.id, t.price, t.in_time, t.out_time, p.type FROM ticket t, parking p
             WHERE p.parking_number = t.parking_number AND t.vehicle_reg_number = ?
-            ORDER BY t.in_time LIMIT 1""";
+            ORDER BY t.in_time DESC LIMIT 1""";
 
 }
