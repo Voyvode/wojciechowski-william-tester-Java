@@ -25,4 +25,8 @@ public class DBConstants {
             WHERE p.parking_number = t.parking_number AND t.vehicle_reg_number = ?
             ORDER BY t.in_time DESC LIMIT 1""";
 
+    public static final String GET_NB_TICKET = """
+            SELECT COUNT(out_time) FROM ticket
+            WHERE vehicle_reg_number = ?""";
+
 }

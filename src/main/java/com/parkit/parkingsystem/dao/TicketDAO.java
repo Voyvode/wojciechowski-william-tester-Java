@@ -88,4 +88,18 @@ public class TicketDAO {
         return false;
     }
 
+    public int getNbTicket(String vehicleRegNumber) {
+        try (var con = dataBaseConfig.getConnection();
+             var ps = con.prepareStatement(DBConstants.GET_NB_TICKET)) {
+            ps.setString(1, vehicleRegNumber);
+            var rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception ex) {
+            logger.error("Error getting number of tickets for {}", vehicleRegNumber, ex);
+        }
+        return 0;
+    }
+
 }

@@ -28,6 +28,7 @@ public class FareCalculatorService {
                 case BIKE -> Fare.BIKE_RATE_PER_HOUR;
             };
             if (discount) {
+                System.out.println("5% loyalty discount!");
                 rate *= 0.95;
             }
             ticket.setPrice(duration * rate);
