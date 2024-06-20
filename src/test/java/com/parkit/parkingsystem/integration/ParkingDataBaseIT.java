@@ -2,7 +2,6 @@ package com.parkit.parkingsystem.integration;
 
 import java.time.Duration;
 import java.time.Instant;
-import com.parkit.parkingsystem.constants.Fare;
 import com.parkit.parkingsystem.constants.ParkingType;
 import com.parkit.parkingsystem.dao.ParkingSpotDAO;
 import com.parkit.parkingsystem.dao.TicketDAO;
@@ -17,6 +16,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import static com.parkit.parkingsystem.constants.ParkingType.CAR;
 import static java.time.temporal.ChronoUnit.DAYS;
 import static java.time.temporal.ChronoUnit.HOURS;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -75,7 +75,7 @@ public class ParkingDataBaseIT {
         }
 
         var ticket = ticketDAO.getTicket("ABCDEF");
-        assertEquals(1 * Fare.CAR_RATE_PER_HOUR, ticket.getPrice()); // check one hour car fare in database
+        assertEquals(1 * CAR.getRatePerHour(), ticket.getPrice()); // check one hour car fare in database
         assertEquals(Duration.of(1, HOURS), Duration.between(ticket.getInTime(), ticket.getOutTime())); // check one hour later out time in database
     }
 
@@ -100,7 +100,7 @@ public class ParkingDataBaseIT {
         }
 
         var ticket = ticketDAO.getTicket("ABCDEF");
-        assertEquals(1 * Fare.CAR_RATE_PER_HOUR * 0.95, ticket.getPrice()); // check discounted one hour car fare in database
+        assertEquals(1 * CAR.getRatePerHour() * 0.95, ticket.getPrice()); // check discounted one hour car fare in database
     }
 
 }

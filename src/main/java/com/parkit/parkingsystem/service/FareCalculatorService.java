@@ -1,8 +1,10 @@
 package com.parkit.parkingsystem.service;
 
 import java.time.Duration;
-import com.parkit.parkingsystem.constants.Fare;
 import com.parkit.parkingsystem.model.Ticket;
+
+import static com.parkit.parkingsystem.constants.ParkingType.BIKE;
+import static com.parkit.parkingsystem.constants.ParkingType.CAR;
 
 public class FareCalculatorService {
 
@@ -24,8 +26,8 @@ public class FareCalculatorService {
             ticket.setPrice(0);
         } else {
             double rate = switch (ticket.getParkingSpot().getParkingType()) {
-                case CAR -> Fare.CAR_RATE_PER_HOUR;
-                case BIKE -> Fare.BIKE_RATE_PER_HOUR;
+                case CAR -> CAR.getRatePerHour();
+                case BIKE -> BIKE.getRatePerHour();
             };
             if (discount) {
                 System.out.println("5% loyalty discount!");
